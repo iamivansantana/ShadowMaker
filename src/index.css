@@ -1,13 +1,14 @@
 body {
+
   margin: 0;
   margin-Top: 4rem;
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #ffffff;
+  
   box-sizing: border-box;
-  background-color: #f5f5f5;
 }
-
 /* NavBar................... */
 .navbar-fixed{
   position: fixed;
@@ -61,31 +62,152 @@ body {
   font-weight: 100;
   color: rgb(61, 85, 83);
 }
+/* .......................NavBar */
 
-
+.center-container{
+  position: relative;
+  width: 70%;
+  min-height: calc(100vh - 4rem);
+  height: 600px;
+  left: 50%;
+  transform: translate(-50%);
+}
 .container{
-  height:  100vh;
+  height: calc( 100vh - 4rem);
   display: grid;
   gap: 10px;
-  /* grid-template-columns: 1fr 1fr */
-  /* grid-template-rows: 3fr 2fr; */
-  grid-template-columns: repeat(auto-fit,minmax(400px,1fr));
-  
+  grid-template-columns: 1fr 1fr
 }
-
-
-
 .box{
-  background-color: aqua;
   padding: 1rem;
-  color: #000;
   text-align: center;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 750px;
+  
+}
+.box-l{
+  flex-direction: column;
+}
+.caja{
+  width: 400px;
+  height: 400px;
+  background-color: #f5f5f5;
+  -webkit-box-shadow: 4px 8px 73px 5px rgba(0, 0, 0, 0.472);
+  -moz-box-shadow: 4px 8px 73px 5px rgba(0,0,0,0.472);
+  box-shadow: 4px 8px 73px 5px rgba(0,0,0,0.472);  
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.caja-text{
+  width: 85%;
+  height: auto;
+  background-color: white;
+  border: 1px solid #040d1b;
+  color: #0f535c;
+  border-radius: 10px;
+  font-size: .8rem;
+  font-weight: lighter;
+  text-align: right;
+  padding: 10px;
+}
+.caja-slider{
+  width: 400px;
+  height: 70px;
+  /* background-color: #12acb1;
+  border: solid 1px #040d1b; */
+  
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.caja-content{
+  background-color: #131416;
+  color: #f5f5f5;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 1rem;
+  padding-right: 2rem;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.inputColor{
+  margin-left: 1rem;
+  width: 30px;
+}
+.inputText{
+  width: 60px;
+  height: 25px;
+  margin-left: 1rem;
+  border-radius: 5px;
+}
+.slideContairner{
+  width: 80%;
+}
+.slider{
+  appearance: none;
+  width: 100%;
+  height: 20px;
+  background: linear-gradient(90deg, rgb(117, 241, 252) 60%,rgb(214, 214, 214)60%);
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+  border-radius: 12px;
+  box-shadow: 0px 1px 10px 1px rgb(116, 116, 116) ;
+}
+.slider:hover{
+  opacity: 1;
+}
+.slider::-webkit-slider-thumb{
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.slider::-moz-range-thumb{
+  width: 30px;
+  height: 30px;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.slider-values{
+  color: white;
+  font-size: 1rem;
+
+  height: 1rem;
+  margin-top: .5rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
 }
+
+.flex-colum{
+  flex-direction: column;
+}
+
+.P{
+  width: 100%;  
+  display: flex;
+  justify-content: flex-start;
+  margin-top: -15px;
+  opacity: 0.7;
+}
+
 
 @media (max-width:956px) {
 
@@ -108,6 +230,48 @@ body {
     margin: 1.3rem 8px;
     font-size: 1.5rem;
   }
+  /*.............................NavBar */
+
+  .center-container{
+    width: 90%;
+  }
+  .container{
+    grid-template-columns: 1fr;
+  }
+  .box{
+    min-height: 500px;
+  }
+  .box-r{
+    grid-row: 1 / 2;
+  }
+  .caja{
+    width: 250px;
+    height: 250px; 
+  }
+  .caja-text{
+    width: 80%;
+    height: auto;
+    border: 1px solid #000;
+    border-radius: 10px;
+    color: black;
+    font-size: .8rem;
+    font-weight: 100;
+    text-align: left;
+    padding: 10px;
+  }
+  .caja-slider{
+    width: 95%;
+    height: 200px;
+  }
+  .slider{
+    opacity: 1;
+  }
+
 
   
+}
+@media (min-width:1680px){
+  .center-container{
+    width: 1500px;
+  }
 }

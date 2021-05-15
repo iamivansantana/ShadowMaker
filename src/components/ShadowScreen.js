@@ -129,8 +129,105 @@ const ShadowScreen = () => {
         //     background.style.color = e.target.value;
         //     document.getElementById('shadowcolorInputColor').value = e.target.value;
         // })
+
+
+        //Function for sliders
+        const mySliders=()=>{
+            const caja = document.getElementById('caja');
+
+            const sliderOpacityBar = document.getElementById('myRangeOpacity');
+            const sliderOpacity = document.getElementById('myRangeOpacity').value;
+            const sliderOpacityMin = document.getElementById('myRangeOpacity').min;
+            const sliderOpacityMax = document.getElementById('myRangeOpacity').max;
+
+            const sliderWidthBar = document.getElementById('myRangeWidth');
+            const sliderWidth = document.getElementById('myRangeWidth').value;
+            const sliderWidthMin = document.getElementById('myRangeWidth').min;
+            const sliderWidthMax = document.getElementById('myRangeWidth').max;
+
+            const sliderHeightBar = document.getElementById('myRangeHeight');
+            const sliderHeight = document.getElementById('myRangeHeight').value;
+            const sliderHeightMin = document.getElementById('myRangeHeight').min;
+            const sliderHeightMax = document.getElementById('myRangeHeight').max;
+
+            const sliderRadiusBar = document.getElementById('myRangeRadius');
+            const sliderRadius = document.getElementById('myRangeRadius').value;
+            const sliderRadiusMin = document.getElementById('myRangeRadius').min;
+            const sliderRadiusMax = document.getElementById('myRangeRadius').max;
+
+            const sliderPropagationBar = document.getElementById('myRangePropagation');
+            const sliderPropagation = document.getElementById('myRangePropagation').value;
+            const sliderPropagationMin = document.getElementById('myRangePropagation').min;
+            const sliderPropagationMax = document.getElementById('myRangePropagation').max;
+
+
+            //Valor del Slider (Barra).
+           const valueSliderOpacity = sliderOpacity*0.01;
+           //Valor del SliderWidth (Barra).
+           const valueSliderWidth = sliderWidth;
+           //Valor del SliderHeight (Barra).
+           const valueSliderHeight = sliderHeight;
+           //Valor del SliderRadius (Barra).
+           const valueSliderRadius = sliderRadius;
+           //Valor del SliderPropagation (Barra).
+           const valueSliderPropagation = sliderPropagation;
+
+          
+            const inputValue = shadowcolorInputColor.value;
+
+            const color = inputValue;
+            const red = color[1]+color[2];
+            const green = color[3]+color[4];
+            const  blue= color[5]+color[6];
+
+            const r = parseInt(red,16);
+            const g = parseInt(green,16);
+            const b = parseInt(blue,16);
+            
+            //sliderBarOpacityColor
+            //Porcentaje entre Min(-200) y Max(200)
+            var porcentaje = ((sliderOpacity - sliderOpacityMin) / (sliderOpacityMax - sliderOpacityMin) * 100 ); 
+            var colorBarra = `linear-gradient(90deg, rgb(117, 241, 252) ${porcentaje}%,rgb(214, 214, 214)${porcentaje}%)`;
+            sliderOpacityBar.style.background = colorBarra;
+            
+            // sliderBarWithColor
+            //Porcentaje entre Min(-200) y Max(200)
+            const porcentajeWith = ((sliderWidth - sliderWidthMin) / (sliderWidthMax - sliderWidthMin) * 100 ); 
+            const colorBarraWith = `linear-gradient(90deg, rgb(117, 241, 252) ${porcentajeWith}%,rgb(214, 214, 214)${porcentajeWith}%)`;
+            sliderWidthBar.style.background = colorBarraWith;
+            
+            // sliderBarWithColor
+            //Porcentaje entre Min(-200) y Max(200)
+            const porcentajeHeight = ((sliderHeight - sliderHeightMin) / (sliderHeightMax - sliderHeightMin) * 100 ); 
+            const colorBarraHeight = `linear-gradient(90deg, rgb(117, 241, 252) ${porcentajeHeight}%,rgb(214, 214, 214)${porcentajeHeight}%)`;
+            sliderHeightBar.style.background = colorBarraHeight;
+            
+            // sliderBarShadowRadiusColor
+            //Porcentaje entre Min(0) y Max(200)
+            const porcentajeRadius = ((sliderRadius - sliderRadiusMin) / (sliderRadiusMax - sliderRadiusMin) * 100 ); 
+            const colorBarraRadius = `linear-gradient(90deg, rgb(117, 241, 252) ${porcentajeRadius}%,rgb(214, 214, 214)${porcentajeRadius}%)`;
+            sliderRadiusBar.style.background = colorBarraRadius;
+            
+            // sliderBarPropagationRadiusColor
+            //Porcentaje entre Min(-200) y Max(200)
+            const porcentajePropagation = ((sliderPropagation - sliderPropagationMin) / (sliderPropagationMax - sliderPropagationMin) * 100 ); 
+            const colorBarraPropagation = `linear-gradient(90deg, rgb(117, 241, 252) ${porcentajePropagation}%,rgb(214, 214, 214)${porcentajePropagation}%)`;
+            sliderPropagationBar.style.background = colorBarraPropagation;
+            
+        
+
+            
+            const value = ` ${valueSliderWidth}px ${valueSliderHeight}px ${valueSliderRadius}px ${valueSliderPropagation}px rgb(${r}, ${g}, ${b}, ${valueSliderOpacity})`;
+            
+           const colorRgba = ` rgb(${r}, ${g}, ${b}, ${valueSliderOpacity})`;
+           
+            caja.style.color = colorRgba;
+            caja.style.boxShadow = value;
+
+        };
+
        
-        //Slider-Opacity        
+    //Slider-Opacity        
         valueOpacity.innerHTML = sliderOpacity.value*.01;
         valueOpacity1.innerHTML = sliderOpacity.value*.01;
         valueOpacity2.innerHTML = sliderOpacity.value*.01;
@@ -146,55 +243,10 @@ const ShadowScreen = () => {
             valueOpacity3.innerHTML = valueDecimal.toFixed(2);
         }
         
-        sliderOpacity.addEventListener("input",function(){
+        document.getElementById('myRangeOpacity').addEventListener('input',mySliders);
+       
 
-            //Valor del Slider (Barra).
-           const valueSliderOpacity = sliderOpacity.value*0.01;
-           //Valor del SliderWidth (Barra).
-           const valueSliderWidth = sliderWidth.value;
-           //Valor del SliderHeight (Barra).
-           const valueSliderHeight = sliderHeight.value;
-           //Valor del SliderRadius (Barra).
-           const valueSliderRadius = sliderRadius.value;
-           //Valor del SliderPropagation (Barra).
-           const valueSliderPropagation = sliderPropagation.value;
-
-
-          
-            const inputValue = shadowcolorInputColor.value;
-
-            const color = inputValue;
-            const red = color[1]+color[2];
-            const green = color[3]+color[4];
-            const  blue= color[5]+color[6];
-
-            const r = parseInt(red,16);
-            const g = parseInt(green,16);
-            const b = parseInt(blue,16);
-            
-            //sliderBarColor
-            var porcentaje = ((sliderOpacity.value - sliderOpacity.min) / (sliderOpacity.max - sliderOpacity.min) * 100 ); 
-            var colorBarra = `linear-gradient(90deg, rgb(117, 241, 252) ${porcentaje}%,rgb(214, 214, 214)${porcentaje}%)`;
-                sliderOpacity.style.background = colorBarra;
-            
-
-            
-            
-
-            const value = ` ${valueSliderWidth}px ${valueSliderHeight}px ${valueSliderRadius}px ${valueSliderPropagation}px rgb(${r}, ${g}, ${b}, ${valueSliderOpacity})`;
-           const colorRgba = ` rgb(${r}, ${g}, ${b}, ${valueSliderOpacity})`;
-           
-            caja.style.color = colorRgba;
-            caja.style.boxShadow = value;
-
-
-
-
-
-
-        });
-
-        //Slider-Width 
+    //Slider-Width 
             //Asignacion del valor del slider a la caja de texto
         valueWidth.innerHTML =  sliderWidth.value;
         valueWidth1.innerHTML = sliderWidth.value;
@@ -207,33 +259,16 @@ const ShadowScreen = () => {
             valueWidth2.innerHTML = this.value;
             valueWidth3.innerHTML = this.value;
         }
-        sliderWidth.addEventListener("input",function(){
-            //Valor del Slider (Barra).
-            const valueSliderWidth = sliderWidth.value;
-            //Valor del SliderHeight (Barra).
-            const valueSliderHeight = sliderHeight.value;
-            //Valor del SliderRadius (Barra).
-            const valueSliderRadius = sliderRadius.value;
-            //Valor del SliderPropagation (Barra).
-            const valueSliderPropagation = sliderPropagation.value;
-
-            //Porcentaje entre Min(-200) y Max(200)
-            const porcentaje = ((sliderWidth.value - sliderWidth.min) / (sliderWidth.max - sliderWidth.min) * 100 ); 
-            const colorBarra = `linear-gradient(90deg, rgb(117, 241, 252) ${porcentaje}%,rgb(214, 214, 214)${porcentaje}%)`;
-            sliderWidth.style.background = colorBarra;
-
-            const colorSombra = caja.style.color;
-            const width1 = `${valueSliderWidth}px ${valueSliderHeight}px ${valueSliderRadius}px ${valueSliderPropagation}px ${colorSombra}`;
-            
-            caja.style.boxShadow = width1;
-        });
+        document.getElementById('myRangeWidth').addEventListener('input',mySliders);
         
-        //Slider-Height 
+        
+    //Slider-Height 
             //Asignacion del valor del slider a la caja de texto
         valueHeight.innerHTML  = sliderHeight.value;
         valueHeight1.innerHTML = sliderHeight.value;
         valueHeight2.innerHTML = sliderHeight.value;
         valueHeight3.innerHTML = sliderHeight.value;
+
         sliderHeight.oninput = function(){
             //Asignacion del valor del slider a la caja de texto
             valueHeight.innerHTML = this.value;
@@ -241,29 +276,10 @@ const ShadowScreen = () => {
             valueHeight2.innerHTML = this.value;
             valueHeight3.innerHTML = this.value;
         }
+        document.getElementById('myRangeHeight').addEventListener('input',mySliders);
+        
 
-        sliderHeight.addEventListener("input",function(){
-            //Valor del SliderWidth (Barra).
-            const valueSliderWidth = sliderWidth.value;
-            //Valor del SliderHeight (Barra).
-            const valueSliderHeight = sliderHeight.value;
-            //Valor del SliderRadius (Barra).
-            const valueSliderRadius = sliderRadius.value;
-            //Valor del SliderPropagation (Barra).
-            const valueSliderPropagation = sliderPropagation.value;
-
-            //Porcentaje entre Min(-200) y Max(200)
-            const porcentaje = ((sliderHeight.value - sliderHeight.min) / (sliderHeight.max - sliderHeight.min) * 100 ); 
-            const colorBarra = `linear-gradient(90deg, rgb(117, 241, 252) ${porcentaje}%,rgb(214, 214, 214)${porcentaje}%)`;
-            sliderHeight.style.background = colorBarra;
-
-            const colorSombra = caja.style.color;
-            const width1 = `${valueSliderWidth}px ${valueSliderHeight}px ${valueSliderRadius}px ${valueSliderPropagation}px ${colorSombra}`;
-            
-            caja.style.boxShadow = width1;
-        });
-
-        //Slider-ShadowRadius 
+    //Slider-ShadowRadius 
             //Asignacion del valor del slider a la caja de texto
         valueRadius.innerHTML =  sliderRadius.value;
         valueRadius1.innerHTML = sliderRadius.value;
@@ -276,28 +292,9 @@ const ShadowScreen = () => {
             valueRadius2.innerHTML = this.value;
             valueRadius3.innerHTML = this.value;
         }
-        sliderRadius.addEventListener("input",function(){
-            //Valor del SliderWidth (Barra).
-            const valueSliderWidth = sliderWidth.value;
-            //Valor del SliderHeight (Barra).
-            const valueSliderHeight = sliderHeight.value;
-            //Valor del SliderRadius (Barra).
-            const valueSliderRadius = sliderRadius.value;
-            //Valor del SliderPropagation (Barra).
-            const valueSliderPropagation = sliderPropagation.value;
+        document.getElementById('myRangeRadius').addEventListener('input',mySliders);
 
-            //Porcentaje entre Min(-200) y Max(200)
-            const porcentaje = ((sliderRadius.value - sliderRadius.min) / (sliderRadius.max - sliderRadius.min) * 100 ); 
-            const colorBarra = `linear-gradient(90deg, rgb(117, 241, 252) ${porcentaje}%,rgb(214, 214, 214)${porcentaje}%)`;
-            sliderRadius.style.background = colorBarra;
-
-            const colorSombra = caja.style.color;
-            const values = `${valueSliderWidth}px ${valueSliderHeight}px ${valueSliderRadius}px ${valueSliderPropagation}px ${colorSombra}`;
-            
-            caja.style.boxShadow = values;
-        });
-
-        //Slider-ShadowPropagation 
+    //Slider-ShadowPropagation 
             //Asignacion del valor del slider a la caja de texto
         valuePropagation.innerHTML =  sliderPropagation.value;
         valuePropagation1.innerHTML = sliderPropagation.value;
@@ -310,27 +307,9 @@ const ShadowScreen = () => {
             valuePropagation2.innerHTML = this.value;
             valuePropagation3.innerHTML = this.value;
         }
-        sliderPropagation.addEventListener("input",function(){
-            //Valor del SliderWidth (Barra).
-            const valueSliderWidth = sliderWidth.value;
-            //Valor del SliderHeight (Barra).
-            const valueSliderHeight = sliderHeight.value;
-            //Valor del SliderRadius (Barra).
-            const valueSliderRadius = sliderRadius.value;
-            //Valor del SliderPropagation (Barra).
-            const valueSliderPropagation = sliderPropagation.value;
+        document.getElementById('myRangePropagation').addEventListener('input',mySliders);
 
-            //Porcentaje entre Min(-200) y Max(200)
-            const porcentaje = ((sliderPropagation.value - sliderPropagation.min) / (sliderPropagation.max - sliderPropagation.min) * 100 ); 
-            const colorBarra = `linear-gradient(90deg, rgb(117, 241, 252) ${porcentaje}%,rgb(214, 214, 214)${porcentaje}%)`;
-            sliderPropagation.style.background = colorBarra;
-
-            const colorSombra = caja.style.color;
-            const values = `${valueSliderWidth}px ${valueSliderHeight}px ${valueSliderRadius}px ${valueSliderPropagation}px ${colorSombra}`;
-            
-            caja.style.boxShadow = values;
-        });
-
+        
 
        
     }, []);

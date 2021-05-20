@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react';
+import RangeBar from './rangeBar/RangeBar';
+
 
 const ShadowScreen = () => {
 
@@ -50,31 +52,35 @@ const ShadowScreen = () => {
 
         
 
-       //Input-Background Color
+       //InputColor-Background Color
         const backColorInputColor= document.getElementById('backColorInputColor');
         backColorInputColor.addEventListener('input', e => {
             let background = document.getElementById('fondo');
             background.style.background = e.target.value;
             document.getElementById('backColorInputText').value = e.target.value;
         });
+        //InputText-Background Color
         const backColorInputText= document.getElementById('backColorInputText');
         backColorInputText.addEventListener('input', e => {
             let background = document.getElementById('fondo');
             background.style.background = e.target.value;
             document.getElementById('backColorInputColor').value = e.target.value;
         });
-        //Input-Box Color
+
+        //InputColor-Box Color
        const boxColorInputColor= document.getElementById('boxColorInputColor');
        boxColorInputColor.addEventListener('input', e => {
             caja.style.background = e.target.value;
             document.getElementById('boxColorInputText').value = e.target.value;
         });
+        //InputText-Box Color
         const boxColorInputText= document.getElementById('boxColorInputText');
         boxColorInputText.addEventListener('input', e => {
             caja.style.background = e.target.value;
             document.getElementById('boxColorInputColor').value = e.target.value;
         });
-        //Input-Shadow Color
+
+        //InputColor-Shadow Color
        const shadowcolorInputColor= document.getElementById('shadowcolorInputColor');
        shadowcolorInputColor.addEventListener('input', e => {
 
@@ -89,8 +95,6 @@ const ShadowScreen = () => {
            //Valor del SliderPropagation (Barra).
            const valueSliderPropagation = sliderPropagation.value;
 
-
-          
             const inputValue = e.target.value;
 
             const color = inputValue;
@@ -123,16 +127,56 @@ const ShadowScreen = () => {
 
            document.getElementById('shadowColorInputText').value = e.target.value;
         });
-        // const shadowColorInputText= document.getElementById('shadowColorInputText');
-        // shadowColorInputText.addEventListener('input', e => {
-        //     let background = document.getElementById('caja');
-        //     background.style.color = e.target.value;
-        //     document.getElementById('shadowcolorInputColor').value = e.target.value;
-        // })
 
+        //InputText ShadowColor
+        const shadowColorInputText= document.getElementById('shadowColorInputText');
+        shadowColorInputText.addEventListener('input', e => {
 
-        //Function for sliders
-        const mySliders=()=>{
+            //Valor del Slider (Barra).
+           const valueSliderOpacity = sliderOpacity.value*0.01;
+           //Valor del SliderWidth (Barra).
+           const valueSliderWidth = sliderWidth.value;
+           //Valor del SliderHeight (Barra).
+           const valueSliderHeight = sliderHeight.value;
+           //Valor del SliderRadius (Barra).
+           const valueSliderRadius = sliderRadius.value;
+           //Valor del SliderPropagation (Barra).
+           const valueSliderPropagation = sliderPropagation.value;
+          
+            const inputValue = e.target.value;
+
+            const color = inputValue;
+            const red = color[1]+color[2];
+            const green = color[3]+color[4];
+            const  blue= color[5]+color[6];
+
+            const r = parseInt(red,16);
+            const g = parseInt(green,16);
+            const b = parseInt(blue,16);
+
+            valueRed1.innerHTML = r;
+            valueRed2.innerHTML = r;
+            valueRed3.innerHTML = r;
+
+            valueGreen1.innerHTML = g;
+            valueGreen2.innerHTML = g;
+            valueGreen3.innerHTML = g;
+
+            valueBlue1.innerHTML = b;
+            valueBlue2.innerHTML = b;
+            valueBlue3.innerHTML = b;
+
+           const value = ` ${valueSliderWidth}px ${valueSliderHeight}px ${valueSliderRadius}px ${valueSliderPropagation}px rgb(${r}, ${g}, ${b}, ${valueSliderOpacity})`;
+           const colorRgba = ` rgb(${r}, ${g}, ${b}, ${valueSliderOpacity})`;
+           
+            caja.style.color = colorRgba;
+            caja.style.boxShadow = value;
+
+            document.getElementById('shadowcolorInputColor').value = e.target.value;  
+        });
+        
+    //Function for sliders
+        const mySliders = () => {
             const caja = document.getElementById('caja');
 
             const sliderOpacityBar = document.getElementById('myRangeOpacity');
@@ -214,13 +258,8 @@ const ShadowScreen = () => {
             const colorBarraPropagation = `linear-gradient(90deg, rgb(117, 241, 252) ${porcentajePropagation}%,rgb(214, 214, 214)${porcentajePropagation}%)`;
             sliderPropagationBar.style.background = colorBarraPropagation;
             
-        
-
-            
             const value = ` ${valueSliderWidth}px ${valueSliderHeight}px ${valueSliderRadius}px ${valueSliderPropagation}px rgb(${r}, ${g}, ${b}, ${valueSliderOpacity})`;
-            
-           const colorRgba = ` rgb(${r}, ${g}, ${b}, ${valueSliderOpacity})`;
-           
+            const colorRgba = ` rgb(${r}, ${g}, ${b}, ${valueSliderOpacity})`;         
             caja.style.color = colorRgba;
             caja.style.boxShadow = value;
 
@@ -313,6 +352,8 @@ const ShadowScreen = () => {
 
        
     }, []);
+
+    
     
 
     return (
@@ -419,6 +460,14 @@ const ShadowScreen = () => {
                                     </div>
                                 </div>
                             </div>
+                            <RangeBar 
+                                id={"BarraEjemplo"}
+                                name={'Ejemplo'}
+                                valueMin={-100}
+                                valueMax={100}
+                                valueDefault={20}
+                                valueDown={"Down"}
+                            />
                             
                         </div>
                         <div className="box box-r">

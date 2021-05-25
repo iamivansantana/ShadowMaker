@@ -1,56 +1,26 @@
 import React, { useEffect } from 'react'
 
-const RangeBar = ({id,name,valueMin,valueMax,valueDefault,valueDown}) => {
-
-    console.log(id,name,valueMin,valueMax,valueDefault,valueDown);
-    
-    
+const RangeBar = ({id,name,valueMin,valueMax,valueDefault,valueDown,nameClass}) => {
 
     useEffect(() => {
-
-        const barra = document.getElementById(`${id}`);
-        const downValue  = document.getElementById(`${valueDown}`);
-
-        downValue.innerHTML =  barra.value;
-        barra.oninput = function(){
-            //Asignacion del valor del slider a la caja de texto
-            downValue.innerHTML = this.value;
-        }
-
+        
+        const barra = document.getElementById(id);
+        const downValue  = document.getElementById(valueDown);
+        const className = document.querySelectorAll(nameClass);
+        
         barra.addEventListener('input',function(){
             const porcentajePropagation = ((barra.value - barra.min) / (barra.max - barra.min) * 100 ); 
             const colorBarraPropagation = `linear-gradient(90deg, rgb(117, 241, 252) ${porcentajePropagation}%,rgb(214, 214, 214)${porcentajePropagation}%)`;
             barra.style.background = colorBarraPropagation;
-
-     
-        });
-
         
-        
-    }, []);
-
-    //Function for sliders
-    const mySliders = () => {
-
-
-        const barra = document.getElementById(`${id}`);
-
-
-        const caja = document.getElementById('caja');
+            const caja = document.getElementById('caja');
         
                         const sliderOpacity = document.getElementById('myRangeOpacity').value;
-                        
                         const sliderWidth = document.getElementById('myRangeWidth').value;
-                    
                         const sliderHeight = document.getElementById('myRangeHeight').value;
-
                         const sliderRadius = document.getElementById('myRangeRadius').value;
-
                         const sliderPropagation = document.getElementById('myRangePropagation').value;
-
                         const shadowcolorInputColor= document.getElementById('shadowcolorInputColor');
-
-
 
                         //Valor del Slider (Barra).
                        const valueSliderOpacity = sliderOpacity*0.01;
@@ -63,7 +33,27 @@ const RangeBar = ({id,name,valueMin,valueMax,valueDefault,valueDown}) => {
                        //Valor del SliderPropagation (Barra).
                        const valueSliderPropagation = sliderPropagation;
 
-                    
+                       if (id === 'myRangeOpacity') {
+                           downValue.innerHTML =  valueSliderOpacity.toFixed(2);
+                            barra.oninput = function(){
+                                //Asignacion del valor del slider a la caja de texto
+                                downValue.innerHTML = valueSliderOpacity.toFixed(2);
+                                className.forEach(function(elemento, indice, array) {                                        
+                                    elemento.innerHTML = valueSliderOpacity.toFixed(2);                                     
+                                });
+                            }
+                       } else {
+                           downValue.innerHTML =  barra.value;
+                            barra.oninput = function(){
+                                const thisValue = parseInt(this.value);
+                                //Asignacion del valor del slider a la caja de texto
+                                downValue.innerHTML = thisValue;
+                                className.forEach(function(elemento, indice, array) {
+                                        elemento.innerHTML = thisValue; 
+                                });
+                            }
+                       }            
+
                         const inputValue = shadowcolorInputColor.value;
 
                         const color = inputValue;
@@ -73,21 +63,14 @@ const RangeBar = ({id,name,valueMin,valueMax,valueDefault,valueDown}) => {
 
                         const r = parseInt(red,16);
                         const g = parseInt(green,16);
-                        const b = parseInt(blue,16);
-        
-        // sliderBarPropagationRadiusColor
-        //Porcentaje entre Min(-200) y Max(200)
-        const porcentajePropagation = ((barra.value - barra.min) / (barra.max - barra.min) * 100 ); 
-        const colorBarraPropagation = `linear-gradient(90deg, rgb(117, 241, 252) ${porcentajePropagation}%,rgb(214, 214, 214)${porcentajePropagation}%)`;
-        barra.style.background = colorBarraPropagation;
+                        const b = parseInt(blue,16);        
         
                     const value = ` ${valueSliderWidth}px ${valueSliderHeight}px ${valueSliderRadius}px ${valueSliderPropagation}px rgb(${r}, ${g}, ${b}, ${valueSliderOpacity})`;
                     const colorRgba = ` rgb(${r}, ${g}, ${b}, ${valueSliderOpacity})`;         
                     caja.style.color = colorRgba;
                     caja.style.boxShadow = value;
-
-    };
-    
+        });  
+    } );
 
     return (
         <>
@@ -109,5 +92,4 @@ const RangeBar = ({id,name,valueMin,valueMax,valueDefault,valueDown}) => {
         </>
     )
 }
-
 export default RangeBar

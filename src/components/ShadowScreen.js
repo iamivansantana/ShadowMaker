@@ -172,7 +172,8 @@ const ShadowScreen = () => {
     return (
     <>
         <div className="fondo" id="fondo">
-            <div className="center-container">
+            <div className="center-container">´
+            <h3 className="tittleName">SHADOW MAKER</h3>
                     <div className="container">
                         <div className="box box-l">
                             <div className="caja-slider">

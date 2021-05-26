@@ -56,7 +56,7 @@ body {
 .logo{
   width: 20rem;
   height: 4rem;
-  background-color: rgb(3, 185, 185);
+  background-color: #03b9b9;
 }
 .img{
   display:block;
@@ -77,6 +77,13 @@ body {
   height: 600px;
   left: 50%;
   transform: translate(-50%);
+}
+.tittleName{
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  font-weight: 100;
+  color: #292c33;
 }
 .container{
   height: calc( 100vh - 4rem);
@@ -265,6 +272,7 @@ body {
 
   .center-container{
     width: 90%;
+    
   }
   .container{
     grid-template-columns: 1fr;

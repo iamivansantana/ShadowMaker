@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
+import '../rangeBar/RangeBar.css';
 
 //Componente RangeBar con  los atributos recibidos por props
 const RangeBar = ({id,name,valueMin,valueMax,valueDefault,valueDown,nameClass}) => {
@@ -87,17 +88,17 @@ const RangeBar = ({id,name,valueMin,valueMax,valueDefault,valueDown,nameClass}) 
 
     return (
         <>
-          <div className="caja-slider-slider">
-            <div className="caja-content-slider">
-                <div className="P">
+          <div className="caja-slider-slider-RangeBar">
+            <div className="caja-content-slider-RangeBar">
+                <div className="P-RangeBar">
                     <p>{name}</p>
                 </div>
-                <input type="range" min={valueMin} max={valueMax}  defaultValue={valueDefault} id={id} className="slider"/>
-                <div className="slider-values">
+                <input type="range" min={valueMin} max={valueMax}  defaultValue={valueDefault} id={id} className="slider-RangeBar"/>
+                <div className="slider-values-RangeBar">
                     <p>{valueMin}</p>
                     <p>{valueMax}</p>  
                 </div>
-                <div className="P" style={{marginTop:'-.5rem'}}>
+                <div className="P-RangeBar" style={{marginTop:'-.5rem'}}>
                     <p>Value:  <span id={valueDown}></span> px</p>
                 </div>
             </div>

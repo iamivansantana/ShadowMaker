@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import RangeBar from './rangeBar/RangeBar';
+import '../components/ShadowScreen.css';
 
 
 const ShadowScreen = () => {
@@ -15,9 +16,9 @@ const ShadowScreen = () => {
         const sliderRadius = document.getElementById('myRangeRadius');       
         const sliderPropagation = document.getElementById('myRangePropagation');  
         
-        const valueRedClass = document.querySelectorAll('.valueRedClass');     
-        const valueGreenClass = document.querySelectorAll('.valueGreenClass');     
-        const valueBlueClass = document.querySelectorAll('.valueBlueClass');     
+        const valueRedClass = document.querySelectorAll('.valueRedClass-shadow');     
+        const valueGreenClass = document.querySelectorAll('.valueGreenClass-shadow');     
+        const valueBlueClass = document.querySelectorAll('.valueBlueClass-shadow');     
         
        //InputColor-Background Color.
             //Elemento Input tipo color para definir el color del fondo.
@@ -171,30 +172,30 @@ const ShadowScreen = () => {
 
     return (
     <>
-        <div className="fondo" id="fondo">
-            <div className="center-container">´
-            <h3 className="tittleName">SHADOW MAKER</h3>
-                    <div className="container">
-                        <div className="box box-l">
-                            <div className="caja-slider">
-                                <div className="caja-content">  
+        <div className="fondo-shadow" id="fondo">
+            <div className="center-container-shadow">
+            <h3 className="tittleName-shadow">SHADOW MAKER</h3>
+                    <div className="container-shadow">
+                        <div className="box-shadow box-l-shadow">
+                            <div className="caja-slider-shadow">
+                                <div className="caja-content-shadow">  
                                 <span> Background Color:    </span>
-                                    <input className="inputColor" type="color" defaultValue="#ffffff"  id="backColorInputColor" />
-                                    <input className="inputText" type="text" placeholder="#ffffff" id="backColorInputText"/>
+                                    <input className="inputColor-shadow" type="color" defaultValue="#ffffff"  id="backColorInputColor" />
+                                    <input className="inputText-shadow" type="text" placeholder="#ffffff" id="backColorInputText"/>
                                 </div>
                             </div>
-                            <div className="caja-slider">
-                                <div className="caja-content">  
+                            <div className="caja-slider-shadow">
+                                <div className="caja-content-shadow">  
                                     <span> Box Color:    </span>
-                                    <input className="inputColor" defaultValue="#f5f5f5" type="color"  id="boxColorInputColor" />
-                                    <input className="inputText" type="text" placeholder="#f5f5f5" id="boxColorInputText"/>
+                                    <input className="inputColor-shadow" defaultValue="#f5f5f5" type="color"  id="boxColorInputColor" />
+                                    <input className="inputText-shadow" type="text" placeholder="#f5f5f5" id="boxColorInputText"/>
                                 </div>
                             </div>
-                            <div className="caja-slider">
-                                <div className="caja-content">  
+                            <div className="caja-slider-shadow">
+                                <div className="caja-content-shadow">  
                                     <span> Shadow Color:    </span>
-                                    <input className="inputColor" defaultValue="#2a4fb4" type="color"  id="shadowcolorInputColor" />
-                                    <input className="inputText" type="text" placeholder="#2a4fb478" id="shadowColorInputText"/>
+                                    <input className="inputColor-shadow" defaultValue="#2a4fb4" type="color"  id="shadowcolorInputColor" />
+                                    <input className="inputText-shadow" type="text" placeholder="#2a4fb478" id="shadowColorInputText"/>
                                 </div>
                             </div>
                             
@@ -205,7 +206,7 @@ const ShadowScreen = () => {
                                 valueMax={100}
                                 valueDefault={60}
                                 valueDown={"valueOpacityDown"}
-                                nameClass={'.valueOpacityClass'}
+                                nameClass={'.valueOpacityClass-shadow'}
                             />
                             <RangeBar 
                                 id={"myRangeWidth"}
@@ -214,7 +215,7 @@ const ShadowScreen = () => {
                                 valueMax={200}
                                 valueDefault={60}
                                 valueDown={"widthDown"}
-                                nameClass={'.widthClass'}
+                                nameClass={'.widthClass-shadow'}
                             />
                             <RangeBar 
                                 id={"myRangeHeight"}
@@ -223,7 +224,7 @@ const ShadowScreen = () => {
                                 valueMax={200}
                                 valueDefault={60}
                                 valueDown={"heightDown"}
-                                nameClass={'.heightClass'}
+                                nameClass={'.heightClass-shadow'}
                             />
                             <RangeBar 
                                 id={"myRangeRadius"}
@@ -232,7 +233,7 @@ const ShadowScreen = () => {
                                 valueMax={200}
                                 valueDefault={120}
                                 valueDown={"radiusDown"}
-                                nameClass={'.shadowRadiusClass'}
+                                nameClass={'.shadowRadiusClass-shadow'}
                             />
                             <RangeBar 
                                 id={"myRangePropagation"}
@@ -241,16 +242,16 @@ const ShadowScreen = () => {
                                 valueMax={200}
                                 valueDefault={60}
                                 valueDown={"propagationDown"}
-                                nameClass={'.progationclass'}
+                                nameClass={'.progationclass-shadow'}
                             />
                             
                         </div>
-                        <div className="box box-r">
-                            <div className="caja" id="caja">
-                                <div className="caja-text">
-                                    <p>-webkit-box-shadow: <span className="widthClass" id="valueWidth1">60</span>px <span className="heightClass" id="valueHeight1">60</span>px <span className="shadowRadiusClass" id="valueRadius1">60</span>px <span className="progationclass" id="valuePropagation1">60</span>px rgba(<span className="valueRedClass" id="valueRed1">42</span>, <span className="valueRedClass" id="valueGreen1">79</span>, <span className="valueBlueClass" id="valueBlue1">180</span>, <span className="valueOpacityClass" id="valueOpacity1">0.6</span>);</p>
-                                       <p>-moz-box-shadow: <span className="widthClass" id="valueWidth2">60</span>px <span className="heightClass" id="valueHeight2">60</span>px <span className="shadowRadiusClass" id="valueRadius2">60</span>px <span className="progationclass" id="valuePropagation2">60</span>px rgba(<span className="valueRedClass" id="valueRed2">42</span>, <span className="valueRedClass" id="valueGreen2">79</span>, <span className="valueBlueClass" id="valueBlue2">180</span>, <span className="valueOpacityClass" id="valueOpacity2">0.6</span>);</p>
-                                            <p>box-shadow: <span className="widthClass" id="valueWidth3">60</span>px <span className="heightClass" id="valueHeight3">60</span>px <span className="shadowRadiusClass" id="valueRadius3">60</span>px <span className="progationclass" id="valuePropagation3">60</span>px rgba(<span className="valueRedClass" id="valueRed3">42</span>, <span className="valueRedClass" id="valueGreen3">79</span>, <span className="valueBlueClass" id="valueBlue3">180</span>, <span className="valueOpacityClass" id="valueOpacity3">0.6</span>);</p>
+                        <div className="box-shadow box-r-shadow">
+                            <div className="caja-shadow" id="caja">
+                                <div className="caja-text-shadow">
+                                    <p>-webkit-box-shadow: <span className="widthClass-shadow" id="valueWidth1">60</span>px <span className="heightClass-shadow" id="valueHeight1">60</span>px <span className="shadowRadiusClass-shadow" id="valueRadius1">60</span>px <span className="progationclass-shadow" id="valuePropagation1">60</span>px rgba(<span className="valueRedClass-shadow" id="valueRed1">42</span>, <span className="valueGreenClass-shadow" id="valueGreen1">79</span>, <span className="valueBlueClass-shadow" id="valueBlue1">180</span>, <span className="valueOpacityClass-shadow" id="valueOpacity1">0.6</span>);</p>
+                                       <p>-moz-box-shadow: <span className="widthClass-shadow" id="valueWidth2">60</span>px <span className="heightClass-shadow" id="valueHeight2">60</span>px <span className="shadowRadiusClass-shadow" id="valueRadius2">60</span>px <span className="progationclass-shadow" id="valuePropagation2">60</span>px rgba(<span className="valueRedClass-shadow" id="valueRed2">42</span>, <span className="valueGreenClass-shadow" id="valueGreen2">79</span>, <span className="valueBlueClass-shadow" id="valueBlue2">180</span>, <span className="valueOpacityClass-shadow" id="valueOpacity2">0.6</span>);</p>
+                                            <p>box-shadow: <span className="widthClass-shadow" id="valueWidth3">60</span>px <span className="heightClass-shadow" id="valueHeight3">60</span>px <span className="shadowRadiusClass-shadow" id="valueRadius3">60</span>px <span className="progationclass-shadow" id="valuePropagation3">60</span>px rgba(<span className="valueRedClass-shadow" id="valueRed3">42</span>, <span className="valueGreenClass-shadow" id="valueGreen3">79</span>, <span className="valueBlueClass-shadow" id="valueBlue3">180</span>, <span className="valueOpacityClass-shadow" id="valueOpacity3">0.6</span>);</p>
                                 </div>
                             </div>
                         </div>
